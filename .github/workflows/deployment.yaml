@@ -19,13 +19,13 @@ jobs:
           port: 22 
           script: |
             echo "Conexión SSH exitosa"
-            if cd /var/www/html//jose//${{ github.event.repository.name }}; then
+            if cd /var/www/html//${{ github.event.repository.name }}; then
               echo "reconstruyendo imagen..."
             else
               echo "Clonando imagen..."
-              cd /var/www/html/jose
+              cd /var/www/html
               sudo git clone ${{ github.event.repository.ssh_url }}
-              cd /var/www/html/jose/${{ github.event.repository.name }}
+              cd /var/www/html/${{ github.event.repository.name }}
             fi
             sudo git checkout ${{ github.ref_name }}
             sudo git pull
